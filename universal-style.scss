@@ -1,0 +1,89 @@
+@import "//at.alicdn.com/t/font_3109228_l0by355wfrm.css";
+
+// 3个颜色变量
+$theme:green !default;
+$content:black !default;
+$background:#f0f0f0 !default;
+
+// 一些基本样式的初始化，和按钮没关系
+* {
+  font-size:14px;
+  line-height:1.5;
+  text-decoration:none;
+  outline:none;
+  border:none;
+  color:$content;
+  margin: 0
+}
+
+body {
+  padding:40px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  background:$background;
+  align-items:flex-start;
+  flex-wrap:wrap;
+}
+
+// 下面这个是按钮的默认样式，对于不同样式的按钮，比如大按钮，或者文字按钮，在这个按钮样式的基础上添加样式
+button {
+  background-color:$theme; //这里就用上这个theme的色值了
+  
+//   对于背景色为theme的突出按钮(也就是这个默认样式),简单一点,按钮文字颜色直接写成white
+  color:white;
+  line-height:24px; //修改行高，这样配合下面的padding数值，按钮高度正好是32px
+  font-weight:600;
+  padding:4px 12px; //很好理解，按钮的宽度默认是根据它里面的文字自适应的
+  border-radius:4px; //添加圆角
+  display:flex;
+  
+//   对按钮中的图标进行样式修改,如果按钮中有图标,下面的样式就会生效
+  &::before {
+  font-family: "iconfont" !important;
+  font-size: 24px;
+  font-style: normal;
+  font-weight:normal;
+  margin:0px -8px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  }
+  
+//   按钮的悬停和点击效果
+  &:hover {
+    filter: brightness(1.1) //鼠标悬停时亮度修改为1.1
+  }
+  &:active {
+    filter:brightness(0.9); //鼠标或手指按下时亮度修改为0.8
+    transform:scale(0.98)
+  }
+}
+
+// 次级按钮,底色修改为灰色
+.secondary {
+  background:rgba($content,0.2)
+}
+
+// 无底色的文字按钮,悬停时显示底色
+.clear {
+  background:none;
+  color:$theme;
+  &:hover {
+    filter:none;
+    background:rgba($content,0.1)
+  }
+}
+
+// 大号按钮
+.big {
+  padding:8px 16px
+}
+
+
+// 图标加文字按钮
+.icon-text {
+  padding:4px 12px 4px 16px;
+  &:before {
+    margin-right:4px;
+  }
+}
